@@ -1,9 +1,10 @@
-const path = require('path')
-// const legacy = require('@vitejs/plugin-legacy').default
+import path from 'path'
+import { defineConfig } from 'vite'
+// import legacy from '@vitejs/plugin-legacy'
 
-module.exports = {
+export default defineConfig({
   base: './',
-  plugins:[
+  plugins: [
     // legacy({
     //   targets: 'IE 11',
     //   modernPolyfills: true
@@ -14,13 +15,14 @@ module.exports = {
     manifest: true,
     rollupOptions: {
       input: {
-        'theme-default':path.resolve(__dirname, './theme-dep/default/index.less'),
-        'theme-black':path.resolve(__dirname, './theme-dep/black/index.less'),
-        'theme-white':path.resolve(__dirname, './theme-dep/white/index.less')
+        "index": path.resolve(__dirname, './index.html'),
+        'theme-default': path.resolve(__dirname, './theme-dep/default/index.less'),
+        'theme-black': path.resolve(__dirname, './theme-dep/black/index.less'),
+        'theme-white': path.resolve(__dirname, './theme-dep/white/index.less')
       },
-      output:{
-        assetFileNames: `assets/css/[name].[hash][extname]`,
+      output: {
+        assetFileNames: 'assets/css/[name].[hash][extname]'
       }
     }
   }
-}
+})
